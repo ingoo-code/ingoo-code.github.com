@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./src/index.css" rel="stylesheet"> 
+    <script type="text/javascript" src="./source/test.json"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',init);
+        const category = Object.keys(data);
+        function init(){
+            const nav = document.querySelector('.nav');
+            category.forEach( _=>{
+                const li = document.createElement('li');
+                li.addEventListener('click',liEvent)
+                const emotions = items(data[_]);
+                li.innerHTML = _;
+                li.appendChild(emotions);
+                nav.appendChild(li);
+            })    
+        }
+        function liEvent(){
+            const li = document.querySelectorAll('.nav >li');
+            console.log(event.target)
+            li.forEach(element => {
+                if(element == event.target){
+                    element.childNodes[1].classList.add('on');
+                } else {
+                    element.childNodes[1].classList.remove('on');
+                }
+            })
+        }
+        function items(eml){
+            const boxItem = document.createElement('div');
+            boxItem.setAttribute('class','box-tiem');
+            eml.emoticon.forEach( _ => {
+                let emotionEle = document.createElement('p');
+                          
+                emotionEle.setAttribute('class','emotion');
+                emotionEle.innerHTML = _;
+                emotionEle.addEventListener('click',emotionEvt);
+                boxItem.appendChild(emotionEle);
+                
+            })
+
+            return boxItem;
+        }
+
+        function emotionEvt(){
+            document.querySelector('.area').innerHTML = '';
+            let tempEle = document.createElement('textarea');  
+            tempEle.classList.add('out');
+            tempEle.innerHTML = this.innerHTML;
+            document.querySelector('.area').appendChild(tempEle);
+            tempEle.select();
+            document.execCommand("copy");
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="area">
+
+    </div>
+    <div id="wrap">
+        <h2 class="subject">제목</h2>
+        <ul class="nav">
+        
+        </ul>
+        <div data-tf-chat data-tf-tooltip="Hey 👋&nbsp;&nbsp;How can I help you? " data-tf-popover="ivQR5Kwr" data-tf-button-color="#0445AF"></div><script src="//embed.typeform.com/next/embed.js"></script>
+    </div>
+</body>
+</html>
