@@ -3,6 +3,11 @@
     padding:0;
 }
 
+body{
+    font-family: SofiaPro,PingFangSC,sans-serif;
+    font-weight: 400;
+}
+
 ul,li{
     list-style:none;
 }
@@ -15,6 +20,7 @@ ul,li{
 .subject{
     font-size:8vh;
     padding:22px;
+    font-weight:400;
     text-align:center;
 }
 
@@ -51,9 +57,8 @@ ul,li{
     color: #000;
     text-align: center;
     text-transform: uppercase;
-    font-family: "Arial Black", sans-serif;
     font-size: 2vh;
-    font-weight: bold;
+    font-weight: 400;
     border:1px solid #ddd;
     border-radius: 30px;
 }
@@ -98,11 +103,16 @@ ul,li{
     padding:6vw;
     height:inherit;
     font-size:5vw;
-    font-weight:bold;
+    font-weight:300;
     background:#eee;
     min-width:10vw;
     text-align:center;
     line-height:5vh;
+}
+
+.category-item > li > .emotion > span{
+    display:inline-block;
+    font-weight: 400;
 }
 
 .category-item > li > .emotion_hover{
