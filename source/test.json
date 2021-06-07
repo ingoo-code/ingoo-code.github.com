@@ -1,14 +1,51 @@
 let data={
     "menu1":{
-        "emoticon":["!","@","#","$","%","^","&","*","(",")"],
+        "emoticon":[
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            },
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            },
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            },
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            },
+        ]
+        
     },
+
     "menu2":{
-        "emoticon":["!","@","#","$","%","^","&","*","(",")"],
+        "emoticon":[
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            }
+        ]
     },
+
+
     "menu3":{
-        "emoticon":["!","@","#","$","%","^","&","*","(",")"],
+        "emoticon":[
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            }
+        ]
     },
+
     "menu4":{
-        "emoticon":["!","@","#","$","%","^","&","*","(",")"],
+        "emoticon":[
+            {
+                "content":"did you get a whoppa 🍔🍔",
+                "auth":"tecinpark"
+            }
+        ]
     },
 }

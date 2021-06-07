@@ -5,68 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet"> 
     <link href="./src/index.css" rel="stylesheet"> 
     <script type="text/javascript" src="./source/test.json"></script>
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded',init);
         const category = Object.keys(data);
+        document.addEventListener('DOMContentLoaded',init);
         function init(){
             const nav = document.querySelector('.nav');
-            category.forEach( _=>{
-                const li = document.createElement('li');
-                li.addEventListener('click',liEvent)
-                const emotions = items(data[_]);
-                li.innerHTML = _;
-                li.appendChild(emotions);
-                nav.appendChild(li);
-            })    
-        }
-        function liEvent(){
-            const li = document.querySelectorAll('.nav >li');
-            li.forEach(element => {
-                if(element == event.target){
-                    element.childNodes[1].classList.add('on');
-                } else {
-                    element.childNodes[1].classList.remove('on');
-                }
+            category.forEach( (menu,key) => {
+                const cate = document.querySelector('#cate');
+                const clone = cate.cloneNode(true);
+                clone.innerHTML = clone.innerHTML.replaceAll('{menu}',menu);
+                const fragment = document.importNode(clone.content, true)
+                if(key == 0 ) fragment.querySelector('input').setAttribute('checked','checked')
+                const card = items(data[menu],fragment.querySelector('.category-item'));
+                fragment.querySelector('.category').appendChild(card);
+                nav.appendChild(fragment);
             })
         }
-        function items(eml){
-            const boxItem = document.createElement('div');
-            boxItem.setAttribute('class','box-tiem');
-            eml.emoticon.forEach( _ => {
-                let emotionEle = document.createElement('p');
-                          
-                emotionEle.setAttribute('class','emotion');
-                emotionEle.innerHTML = _;
-                emotionEle.addEventListener('click',emotionEvt);
-                boxItem.appendChild(emotionEle);
-                
+
+        function items(arr,frg){
+            arr.emoticon.forEach( list => {
+                const card = document.querySelector('#card');
+                const clone = card.cloneNode(true);
+                clone.innerHTML = clone.innerHTML.replaceAll('{auth}',list.auth);
+                clone.innerHTML = clone.innerHTML.replaceAll('{content}',list.content);
+                const fragment = document.importNode(clone.content,true);
+                frg.appendChild(fragment);
             })
 
-            return boxItem;
-        }
-
-        function emotionEvt(){
-            document.querySelector('.area').innerHTML = '';
-            let tempEle = document.createElement('textarea');  
-            tempEle.classList.add('out');
-            tempEle.innerHTML = this.innerHTML;
-            document.querySelector('.area').appendChild(tempEle);
-            tempEle.select();
-            document.execCommand("copy");
-            
+            return frg;
         }
     </script>
 </head>
 <body>
-    <div class="area">
+    
+    <template id="cate">
+        <li class="category">
+            <input type="radio" id="{menu}" name="menu">
+            <label for="{menu}">#{menu}</label>
+            <ul class="category-item"></ul>
+        </li>
+    </template>
 
-    </div>
+    <template id="card">
+        <li>
+            <p class="emotion" data-value="{content}">{content}
+                <span>by @{auth}</span>
+            </p>
+            <p class="emotion_hover">
+                <span class="txt">Copy</span>
+                <span class="arrow">&gt;</span>
+            </p>
+        </li>
+    </template>
+
     <div id="wrap">
-        <h2 class="subject">제목</h2>
+        <h2 class="subject">COPY&amp;PASTE</h2>
         <ul class="nav">
-        
+           
         </ul>
         <div data-tf-chat data-tf-tooltip="Hey 👋&nbsp;&nbsp;How can I help you? " data-tf-popover="ivQR5Kwr" data-tf-button-color="#0445AF"></div><script src="//embed.typeform.com/next/embed.js"></script>
     </div>
