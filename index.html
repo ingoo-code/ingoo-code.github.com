@@ -23,7 +23,6 @@
         }
         function liEvent(){
             const li = document.querySelectorAll('.nav >li');
-            console.log(event.target)
             li.forEach(element => {
                 if(element == event.target){
                     element.childNodes[1].classList.add('on');
