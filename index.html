@@ -33,10 +33,22 @@
                 clone.innerHTML = clone.innerHTML.replaceAll('{auth}',list.auth);
                 clone.innerHTML = clone.innerHTML.replaceAll('{content}',list.content);
                 const fragment = document.importNode(clone.content,true);
+                fragment.querySelector('.emotion').addEventListener('click',emotionEvt);
                 frg.appendChild(fragment);
             })
 
             return frg;
+        }
+
+        function emotionEvt(){
+            document.querySelector('.area').innerHTML = '';
+            let tempEle = document.createElement('textarea');  
+            tempEle.classList.add('out');
+            tempEle.innerHTML = event.target.dataset.value;
+            document.querySelector('.area').appendChild(tempEle);
+            tempEle.select();
+            document.execCommand("copy");   
+            
         }
     </script>
 </head>
@@ -61,7 +73,7 @@
             </p>
         </li>
     </template>
-
+    <div class="area" style="position:absolute; top:10000px;"></div>
     <div id="wrap">
         <h2 class="subject">COPY&amp;PASTE</h2>
         <ul class="nav">
